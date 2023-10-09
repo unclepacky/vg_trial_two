@@ -19,9 +19,9 @@ enum CustomerType {
 model Customer {
   id          String       @id @default(uuid())
   type        CustomerType @default(GUEST)
-  firstName   String
-  LastName    String
-  displayName String
+  firstName   String?
+  LastName    String?
+  displayName String?
   email       String       @unique
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt

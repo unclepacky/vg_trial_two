@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Prisma Course: Zero To Hero 🎯
 
-## Getting Started
+<cite>by Sakura Dev</cite>
+Check out the [tutorial on Youtube](https://www.youtube.com/watch?v=yW6HnMUAWNU)
 
-First, run the development server:
+## PACKAGES
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx create-next-app@latest
+# options: typescript - use tailwind - app folder
+
+Install Prisma extension from prisma
+#useful extension
+
+npm install prisma --save-dev
+#install prisma - a dev dependency
+
+npm install @prisma/client
+#install prisma
+
+
+npx prisma
+#to see the available commands
+
+npx prisma init
+# Creates prisma folder and the .env file where connection string
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## STEPS
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### install all the packages
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+    npm install prisma
+    npm install @prisma/client
+    npx prisma init
+```
 
-## Learn More
+### Setup the connection string
 
-To learn more about Next.js, take a look at the following resources:
+A .env file got created after npx prisma init. In the .env file modify the connection string to point to the desired database.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Create a seed.ts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- In the prisma folder create a seed.ts file and create the functions to insert record in the tables
+- In package.json in a prisma key:
 
-## Deploy on Vercel
+```json
+"prisma": {
+  "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+},
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Terminal run
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npx prisma db seed
+```

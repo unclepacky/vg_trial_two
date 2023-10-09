@@ -9,3 +9,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum CustomerType {
+  GUEST
+  TENANT
+  EXTENANT
+}
+
+model Customer {
+  id          String       @id @default(uuid())
+  type        CustomerType @default(GUEST)
+  firstName   String
+  LastName    String
+  displayName String
+  email       String       @unique
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}

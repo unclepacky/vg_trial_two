@@ -16,13 +16,51 @@ enum CustomerType {
   EXTENANT
 }
 
+enum Role {
+  BASIC
+  ADMIN
+}
+
+enum Prefix {
+  MR
+  MRS
+  MISS
+  DR
+  ENG
+  PROF
+  STUDENT
+}
+
+enum Position {
+  RECEPTION
+  MAINTENANCE
+  CLEANING
+  HOUSEKEEPING
+  SECURITY
+  LAUNDRY
+  WORKSHOP
+}
+
 model Customer {
   id          String       @id @default(uuid())
   type        CustomerType @default(GUEST)
-  firstName   String?
-  LastName    String?
+  prefix      Prefix
+  firstName   String
+  LastName    String
   displayName String?
   email       String       @unique
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+}
+
+model Employee {
+  id          String   @id @default(uuid())
+  role        Role     @default(BASIC)
+  position    Position
+  firstName   String
+  LastName    String
+  displayName String?
+  email       String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
